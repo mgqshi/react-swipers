@@ -8,8 +8,8 @@ const webpackUMDExternal = require('webpack-umd-external');
 
 const pluginsList = [];
 const outputFileName = env === 'production' ?
-    'react-swipes.min.js' :
-    'react-swipes.js';
+    'react-swipers.min.js' :
+    'react-swipers.js';
 
 if (env === 'production') {
     pluginsList.push(
@@ -26,7 +26,7 @@ const config = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: outputFileName,
-        library: 'ReactSwipes',
+        library: 'ReactSwipers',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
