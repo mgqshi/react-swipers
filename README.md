@@ -1,35 +1,7 @@
-## react-swipes 
-
-> 打造最好用的React 移动端卡片滑动 组件。已支持卡片自动播放，配置加入 `autoPlay` 参数即可。
-
-### 为什么要造轮子
-
-目前react component里面 基于移动端轮播/幻灯片 组件，最熟悉应该是`react-swipe`这个库了。且看这个组件的构成：
-
-- react-swipe: 引入swipe-js-iso,创建react组件
-- swipe-js-iso: 基于swipe.js的一个Pull Request
-
-
-也就是说，整个组件是基于几年前的swipe.js的，这个库三四年没更新了，看提问，作者在12年说要发个swipe2，结果不了了之，导致bug修复很慢，功能支持不全。比如我想做这个效果：
-
-![vip](./static/vip.gif)
-
-![newuser](./static/newuser.gif)
-
-
----
-
-尴尬啊，`react-swipe`现在的能力根本支持不了(因为swipe是针对**焦点图**设计的，写死了子元素宽度是父级的宽度)
-
-
-### 解决方案
-
-不用react的情况下，swiper.js 是个不错的选择，但是考虑这个库太大了(5000行+)，为一个卡片滑动实在不值得。最后还是自己搞了个react-swipes，为的就是快速方便的实现上面这种卡片切换效果。
-
-### 安装
-
-    npm i react-swipes --save
-
+## react-swipers### 安装
+```
+npm i react-swipers --save
+```
 ### 使用
 
 #### 原理
@@ -38,13 +10,13 @@ swipes不依赖任何css，不会去改变子item的样式，也就是说，css�
 
 
 ```html
-// 三层滑动原理，动的是第二层
-
-// 第一层设置固定宽度 ，超过部分设置为不显示 overflow: hidden;  
-<div>  
-    //第二层设置为实际需要的宽度，即子div的n倍，有间距需要算上间距
+<!-- 三层滑动原理，动的是第二层 -->
+<!-- 基础样式需要自己编写 -->
+<!-- 第一层设置固定宽度 ，超过部分设置为不显示 overflow: hidden;   -->
+<div >  
+    <!-- 第二层设置为实际需要的宽度，即子div的n倍，有间距需要算上间距 -->
     <div>  
-        //第三层，实际item 内容的宽度     
+        <!-- 第三层，实际item 内容的宽度 -->
         <div></div>  
     </div>  
 </div>
@@ -55,13 +27,14 @@ swipes不依赖任何css，不会去改变子item的样式，也就是说，css�
 #### 具体使用
 
 ```js
-    import ReactSwipe from 'react-swipes'
+    import ReactSwipe from 'react-swipers'
     
-    // swipes 的配置
+    // swipers 的配置
     let opt = {
     distance: 620, // 每次移动的距离，卡片的真实宽度
     currentPoint: 1,// 初始位置，默认从0即第一个元素开始
     autoPlay: true, // 是否开启自动播放
+    interval: 2000,  // 幻灯片切换时间,默认2000ms
     swTouchstart: (ev) => {
 
     },
@@ -84,9 +57,9 @@ swipes不依赖任何css，不会去改变子item的样式，也就是说，css�
     
     // dom 部分
     // 第一层div
-    <div className="card-swipe" >
+    <div className="card-swipe">
         // 第二层div  react-swipes生成一个className为 card-slide的div
-        <ReactSwipe className="card-slide" options={opt}>
+        <ReactSwipe className="card-slide" options={ opt }>
             // 第三层，即本身的item
             this.state.card.length && this.state.card.map((item, index) => <div className="item" key={index}> </div>
         </ReactSwipe>
