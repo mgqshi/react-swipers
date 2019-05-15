@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "react swiper 组件",
   "homepage": "https://github.com/mgqshi/react-swipers#readme",
-  "main": "dist/react-swipes.js",
+  "main": "dist/react-swipers.js",
   "devDependencies": {
     "ava": "^0.13.0",
     "babel-cli": "^6.14.0",
@@ -46,7 +46,7 @@
   "author": "maogqshi@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/younth/react-swipes/issues"
+    "url": "https://github.com/younth/react-swipers/issues"
   },
   "dependencies": {
     "prop-types": "^15.6.1",
